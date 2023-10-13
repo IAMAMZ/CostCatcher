@@ -84,4 +84,8 @@ public class Expense {
     public void setPayee(Payee payee) {
         this.payee = payee;
     }
+    @Override
+    public String toString(){
+        return this.expenseId + this.expenseName;
+    }
 }
