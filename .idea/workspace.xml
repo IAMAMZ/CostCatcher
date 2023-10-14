@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb36cd82-f372-4648-8c93-335a3df88fa1" name="Changes" comment="add view and Controller">
+    <list default="true" id="fb36cd82-f372-4648-8c93-335a3df88fa1" name="Changes" comment="add proxy methods to expense and populate table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Expense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Expense.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/DbUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/DbUtility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/ExpenseTableviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/ExpenseTableviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Payee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Payee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/expense-tableview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/expense-tableview.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +106,7 @@
       <updated>1697143878303</updated>
       <workItem from="1697143879774" duration="10067000" />
       <workItem from="1697229820795" duration="3635000" />
-      <workItem from="1697289130437" duration="1422000" />
+      <workItem from="1697289130437" duration="5401000" />
     </task>
     <task id="LOCAL-00001" summary="Create model classes">
       <option name="closed" value="true" />
@@ -133,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697159054257</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add proxy methods to expense and populate table">
+      <option name="closed" value="true" />
+      <created>1697290714268</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697290714268</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +150,7 @@
     <MESSAGE value="Create model classes" />
     <MESSAGE value="Connect to MySql database and get data" />
     <MESSAGE value="add view and Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="add view and Controller" />
+    <MESSAGE value="add proxy methods to expense and populate table" />
+    <option name="LAST_COMMIT_MESSAGE" value="add proxy methods to expense and populate table" />
   </component>
 </project>

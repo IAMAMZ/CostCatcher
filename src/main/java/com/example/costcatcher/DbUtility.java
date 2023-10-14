@@ -53,8 +53,6 @@ public class DbUtility {
 
                 boolean paid = resultSet.getBoolean("paid");
                 double amountDue = resultSet.getDouble("amountDue");
-
-
                 int payeeId = resultSet.getInt("payeeId");
                 String payeeName = resultSet.getString("payeeName");
                 String contactNumber = resultSet.getString("contactNumber");

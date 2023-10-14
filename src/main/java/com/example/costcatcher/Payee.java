@@ -23,6 +23,10 @@ public class Payee {
     }
 
     public void setPayeeId(int payeeId) {
+
+        if( payeeId<= 0 ){
+            throw new IllegalArgumentException("Id cannot be negative or zero");
+        }
         this.payeeId = payeeId;
     }
 
@@ -31,6 +35,9 @@ public class Payee {
     }
 
     public void setPayeeName(String payeeName) {
+        // payee should start with a letter
+        if (!payeeName.matches("^([A-Z]|[a-z])"))
+            throw new IllegalArgumentException("payee name must start with a letter");
         this.payeeName = payeeName;
     }
 
@@ -55,6 +62,12 @@ public class Payee {
     }
 
     public void setStreetAddress(String streetAddress) {
+
+        // trim the address
+        streetAddress = streetAddress.trim();
+        // must start with a numbers and then letters
+        if(!streetAddress.matches("^\\d+\\s*[A-Za-z]+[A-Za-z\\s]*$"))
+            throw  new IllegalArgumentException("Street address must be the form (digts Street name)");
         this.streetAddress = streetAddress;
     }
 
