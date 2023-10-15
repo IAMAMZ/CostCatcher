@@ -33,7 +33,13 @@ public class Expense {
         return expenseId;
     }
 
+    /**
+     * Expense Id must be an a real number i.e larger than 0
+     * @param expenseId
+     */
     public void setExpenseId(int expenseId) {
+        if ( expenseId<0 )
+            throw new IllegalArgumentException("number cannot be negative");
         this.expenseId = expenseId;
     }
 
@@ -41,7 +47,14 @@ public class Expense {
         return expenseName;
     }
 
+    /**
+     * Expense name must not be empty or null, and must start with a letter
+     * @param expenseName
+     */
     public void setExpenseName(String expenseName) {
+
+        if ((expenseName==null) || (!expenseName.matches("^[A-Za-z].*")))
+            throw new IllegalArgumentException("Expense name must not be null or start with a digit");
         this.expenseName = expenseName;
     }
 
@@ -49,7 +62,13 @@ public class Expense {
         return dueDate;
     }
 
+    /**
+     * due date must not be after the creation date
+     * @param dueDate
+     */
     public void setDueDate(LocalDate dueDate) {
+        if (dueDate.isBefore(creationDate))
+            throw new IllegalArgumentException("Due date cannot be before creation date");
         this.dueDate = dueDate;
     }
 
@@ -57,7 +76,13 @@ public class Expense {
         return creationDate;
     }
 
+    /**
+     * Creation date must not be very old like before 1970
+     * @param creationDate
+     */
     public void setCreationDate(LocalDate creationDate) {
+        if ( creationDate.isBefore(LocalDate.of(1970,01,01)))
+            throw new IllegalArgumentException("Creation date cannot be before 1970");
         this.creationDate = creationDate;
     }
 
@@ -72,7 +97,6 @@ public class Expense {
     public double getAmountDue() {
         return amountDue;
     }
-
     public void setAmountDue(double amountDue) {
         this.amountDue = amountDue;
     }

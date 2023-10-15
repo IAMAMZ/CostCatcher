@@ -60,6 +60,7 @@ public class ExpenseTableviewController implements Initializable {
         expenseDueDateColumn.setCellValueFactory( new PropertyValueFactory<>("dueDate"));
         payeeNameColumn.setCellValueFactory( new PropertyValueFactory<>("payeeNameProxy"));
         payeeAddressColumn.setCellValueFactory(new PropertyValueFactory<>("payeeAddressProxy"));
+        expenseNameColumn.setCellValueFactory(new PropertyValueFactory<>("expenseName"));
         ExpenseTableView.getItems().addAll(DbUtility.getExpenses());
     }
 }

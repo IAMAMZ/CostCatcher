@@ -16,7 +16,7 @@ public class Payee {
     private String postalCode;
 
 
-    private String Country;
+    private String country;
 
     public int getPayeeId() {
         return payeeId;
@@ -36,7 +36,7 @@ public class Payee {
 
     public void setPayeeName(String payeeName) {
         // payee should start with a letter
-        if (!payeeName.matches("^([A-Z]|[a-z])"))
+        if (!payeeName.matches("^[A-Za-z].+"))
             throw new IllegalArgumentException("payee name must start with a letter");
         this.payeeName = payeeName;
     }
@@ -45,7 +45,16 @@ public class Payee {
         return contactNumber;
     }
 
+
+    /**
+     * Phone number must be between 4 and 15 digits, cannot be empty or null
+     * @param contactNumber
+     */
     public void setContactNumber(String contactNumber) {
+
+        if ((contactNumber==null) || (!contactNumber.matches("\\d{4,15}")))
+            throw new IllegalArgumentException("number cannot be null or empty, and must be between 4 and 15 digits");
+
         this.contactNumber = contactNumber;
     }
 
@@ -53,7 +62,12 @@ public class Payee {
         return email;
     }
 
+    /**
+     * Email must contain @ and .
+     * @param email
+     */
     public void setEmail(String email) {
+        if ((email==null) || (!email.matches("^.+@.+\\.+$")))
         this.email = email;
     }
 
@@ -66,8 +80,8 @@ public class Payee {
         // trim the address
         streetAddress = streetAddress.trim();
         // must start with a numbers and then letters
-        if(!streetAddress.matches("^\\d+\\s*[A-Za-z]+[A-Za-z\\s]*$"))
-            throw  new IllegalArgumentException("Street address must be the form (digts Street name)");
+        if(!streetAddress.matches("^\\d+\\s*[A-Za-z,-]+[A-Za-z\\s,-]*"))
+            throw  new IllegalArgumentException("Street address must be the form (digits Street name)");
         this.streetAddress = streetAddress;
     }
 
@@ -75,28 +89,41 @@ public class Payee {
         return postalCode;
     }
 
+    /**
+     *  Postal code length must be between 2 and 10 characters (inclusive)
+     * @param postalCode
+     */
     public void setPostalCode(String postalCode) {
+        if((postalCode==null) || (!postalCode.matches(".{2,10}")))
+            throw new IllegalArgumentException("Postal code must be between 2 and 10 characters (inclusive)");
         this.postalCode = postalCode;
     }
 
+    /**
+     *  Country must not contain digits and must be between 3 and 60 characters
+     * @return
+     */
     public String getCountry() {
-        return Country;
+
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        if( ( country==null) ||(!country.matches("\\D{3,60}")) )
+            throw new IllegalArgumentException("Country must not contain digits and must be between 3 and 60 characters");
+        country = country;
     }
 
 
 
 
     public Payee(int payeeId, String payeeName, String contactNumber, String email, String streetAddress, String postalCode, String country) {
-        this.payeeId = payeeId;
-        this.payeeName = payeeName;
-        this.contactNumber = contactNumber;
-        this.email = email;
-        this.streetAddress = streetAddress;
-        this.postalCode = postalCode;
-        Country = country;
+        setPayeeId( payeeId);
+        setPayeeName( payeeName);
+        setContactNumber( contactNumber);
+        setEmail( email);
+        setStreetAddress( streetAddress);
+        setPostalCode( postalCode);
+        setCountry( country);
     }
 }
