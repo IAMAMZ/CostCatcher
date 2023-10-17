@@ -125,4 +125,18 @@ public class Expense {
     public String toString(){
         return this.expenseId + this.expenseName;
     }
+
+    public boolean contains(String searchTerm, boolean isPaid,boolean notPaid){
+        // lowercase search term to remove case sensitivity
+        searchTerm = searchTerm.toLowerCase();
+        return (
+                (
+                Integer.toString(expenseId).contains(searchTerm) ||
+                        expenseName.trim().toLowerCase().contains(searchTerm)||
+                    payee.getEmail().trim().toLowerCase().contains(searchTerm) ||
+                payee.getPayeeName().trim().toLowerCase().contains(searchTerm)||
+                payee.getContactNumber().trim().toLowerCase().contains(searchTerm)
+                ) && ( paid && isPaid || !paid && notPaid));
+
+    }
 }

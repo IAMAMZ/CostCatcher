@@ -3,16 +3,17 @@ package com.example.costcatcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ExpenseTableviewController implements Initializable {
 
+    ArrayList<Expense> allExpenses;
     @FXML
     private TableView<Expense> ExpenseTableView;
 
@@ -42,6 +43,21 @@ public class ExpenseTableviewController implements Initializable {
 
     @FXML
     private TableColumn<Expense, String> payeeNameColumn;
+    @FXML
+    private CheckBox isPaidCheckBox;
+    @FXML
+    private CheckBox notPaidCheckBox;
+
+    @FXML
+    private Label totalLabel;
+    @FXML
+    private TextField filterTextField;
+
+
+    @FXML
+    void search(ActionEvent event) {
+
+    }
 
     @FXML
     void insertExp(ActionEvent event) {
@@ -52,6 +68,8 @@ public class ExpenseTableviewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        allExpenses = DbUtility.getExpenses();
         amountDueColumn.setCellValueFactory( new PropertyValueFactory<>("amountDue"));
         payeeEmailColumn.setCellValueFactory( new PropertyValueFactory<>("payeeEmailProxy"));
         exenseIdColumn.setCellValueFactory( new PropertyValueFactory<>("expenseId"));
@@ -61,6 +79,24 @@ public class ExpenseTableviewController implements Initializable {
         payeeNameColumn.setCellValueFactory( new PropertyValueFactory<>("payeeNameProxy"));
         payeeAddressColumn.setCellValueFactory(new PropertyValueFactory<>("payeeAddressProxy"));
         expenseNameColumn.setCellValueFactory(new PropertyValueFactory<>("expenseName"));
-        ExpenseTableView.getItems().addAll(DbUtility.getExpenses());
+        ExpenseTableView.getItems().addAll(allExpenses);
+
+        // initially check all the checkboxes to true
+        isPaidCheckBox.setSelected(true);
+        notPaidCheckBox.setSelected(true);
+
+        // add event handlers
+        isPaidCheckBox.addEventHandler(ActionEvent.ACTION,event ->{applyFilters(filterTextField.getText());});
+        notPaidCheckBox.addEventHandler(ActionEvent.ACTION,event ->{applyFilters(filterTextField.getText());});
+        filterTextField.textProperty().addListener((observableValue,oldValue,newValue)->applyFilters(newValue));
+    }
+
+    private void applyFilters(String searchTerm){
+
+        ExpenseTableView.getItems().clear();
+
+        ExpenseTableView.getItems().addAll(allExpenses.stream().filter(expense -> expense.contains(searchTerm,isPaidCheckBox.isSelected(),
+                notPaidCheckBox.isSelected())).toList());
+
     }
 }
