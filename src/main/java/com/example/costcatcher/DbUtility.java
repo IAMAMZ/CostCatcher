@@ -76,6 +76,24 @@ public class DbUtility {
         return expenses;
     }
 
+    public static String saveExpense(String expenseName, LocalDate dueDate, LocalDate creationDate, boolean paid, double amountDue, Payee payee) throws SQLException {
+
+        String responseMsg = "Something Went Wrong";
+
+        String sql = "INSERT INTO expenses VALUES (?,?,?,?,?,?)";
+
+        try(
+                Connection conn = DriverManager.getConnection(connectUrl,user,password);
+                PreparedStatement ps = conn.prepareStatement(sql);
+                )
+        {
+            // add the values
+        }
+
+
+        return responseMsg;
+    }
+
 
 
 }

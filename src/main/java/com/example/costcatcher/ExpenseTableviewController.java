@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -60,7 +61,9 @@ public class ExpenseTableviewController implements Initializable {
     }
 
     @FXML
-    void insertExp(ActionEvent event) {
+    void insertExp(ActionEvent event) throws IOException {
+
+        SceneChanger.changeScenes(event,"insert-expenseview.fxml");
 
 
 
@@ -81,6 +84,8 @@ public class ExpenseTableviewController implements Initializable {
         expenseNameColumn.setCellValueFactory(new PropertyValueFactory<>("expenseName"));
         ExpenseTableView.getItems().addAll(allExpenses);
 
+        updateLabels();
+
         // initially check all the checkboxes to true
         isPaidCheckBox.setSelected(true);
         notPaidCheckBox.setSelected(true);
@@ -98,5 +103,17 @@ public class ExpenseTableviewController implements Initializable {
         ExpenseTableView.getItems().addAll(allExpenses.stream().filter(expense -> expense.contains(searchTerm,isPaidCheckBox.isSelected(),
                 notPaidCheckBox.isSelected())).toList());
 
+        updateLabels();
+
+    }
+
+    private void updateLabels(){
+        double total = 0;
+
+        for( Expense expense: ExpenseTableView.getItems()){
+            total +=expense.getAmountDue();
+        }
+
+        totalLabel.setText(String.format("Total amount is: $%.2f",total));
     }
 }
