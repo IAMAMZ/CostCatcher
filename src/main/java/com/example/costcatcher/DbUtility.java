@@ -76,11 +76,11 @@ public class DbUtility {
         return expenses;
     }
 
-    public static String saveExpense(String expenseName, LocalDate dueDate, LocalDate creationDate, boolean paid, double amountDue, Payee payee) throws SQLException {
+    public static String saveExpense(String expenseName, LocalDate dueDate, boolean paid, double amountDue, Payee payee,boolean isRecurring, int recurrencePeriod) throws SQLException {
 
         String responseMsg = "Something Went Wrong";
 
-        String sql = "INSERT INTO expenses VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO Expense  (expenseName, dueDate, creationDate, paid, amountDue, isRecurring, recurrencePeriodDays, payeeId)VALUES (?,?,?,?,?,?,?,?);";
 
         try(
                 Connection conn = DriverManager.getConnection(connectUrl,user,password);
@@ -88,6 +88,27 @@ public class DbUtility {
                 )
         {
             // add the values
+            ps.setString(1,expenseName);
+            ps.setString(2,dueDate.toString());
+            ps.setString(3,LocalDate.now().toString());
+            ps.setString(4, paid?"TRUE":"FALSE");
+            ps.setString(5,String.valueOf(amountDue));
+            ps.setString(6,isRecurring?"TRUE":"FALSE");
+            ps.setString(7,String.valueOf(recurrencePeriod));
+            ps.setString(8,String.valueOf(payee.getPayeeId()));
+
+            // execute the update
+            ps.executeUpdate();
+
+            responseMsg = "Expense Added successfully";
+
+
+        }
+        catch (SQLIntegrityConstraintViolationException e){
+            responseMsg = "Something wrong with the data";
+        }
+        catch (Exception e){
+            responseMsg = e.getMessage();
         }
 
 

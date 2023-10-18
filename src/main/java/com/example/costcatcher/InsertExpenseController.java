@@ -2,9 +2,7 @@ package com.example.costcatcher;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 
@@ -39,6 +37,17 @@ public class InsertExpenseController {
 
     @FXML
     private TextField payeeStAdressTextField;
+    @FXML
+    private TextField RecurrencePeriodTextFiedl;
+    @FXML
+    private RadioButton notPaidRadio;
+    @FXML
+    private RadioButton isPaidRadio;
+
+    @FXML
+    private CheckBox isReccuringCheckBox;
+
+
 
     @FXML
     void backToExpenseTableBtn(ActionEvent event) throws IOException {
