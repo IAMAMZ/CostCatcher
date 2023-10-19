@@ -12,7 +12,7 @@ public class TestingDbUtility {
 
         //System.out.println(DbUtility.getExpenses());
 
-        Payee myPayee = new Payee(4,"AMD","23223232","Amd@amd.com","15 belfast road",
+     /*   Payee myPayee = new Payee(4,"AMD","23223232","Amd@amd.com","15 belfast road",
                 "M2J CL5","CANADA");
 
         //System.out.println(DbUtility.insertPayeeToDb(myPayee));
@@ -21,6 +21,10 @@ public class TestingDbUtility {
 
         System.out.println(DbUtility.insertExpenseToDb(myExpense,false,0));
 
-        System.out.println(LocalDate.now().toString());
+        System.out.println(LocalDate.now().toString());*/
+
+
+        ArrayList<Payee> payees = DbUtility.getPayees();
+
     }
 }

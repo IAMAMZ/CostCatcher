@@ -42,7 +42,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="ExpNameTxtField" alignment="TOP_LEFT" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="expNameTxtField" alignment="TOP_LEFT" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label prefWidth="300.0" text="Due Date " GridPane.rowIndex="3">
                            <font>
                               <Font size="18.0" />
@@ -92,7 +92,7 @@
                            </font>
                         </RadioButton>
                         <CheckBox fx:id="isReccuringCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="118.0" text="Check this if Yes" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="RecurrencePeriodTextField" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="recurrencePeriodTextField" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label prefWidth="300.0" text="Payable To:">
                            <font>
                               <Font size="18.0" />
@@ -103,7 +103,7 @@
                               <Insets right="300.0" />
                            </GridPane.margin>
                         </ChoiceBox>
-                        <Button mnemonicParsing="false" onAction="#toCreatePayeeProfilebtn" text="Not in the list? click here to create a Payee profile" GridPane.columnIndex="1">
+                        <Button fx:id="toCreatePayeeProfilebtn" mnemonicParsing="false" onAction="#toCreatePayeeProfilebtn" text="Not in the list? click here to create a Payee profile" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="180.0" />
                            </GridPane.margin>
@@ -112,7 +112,7 @@
                   </GridPane>
                </children>
             </VBox>
-            <Label text="Label">
+            <Label fx:id="respLabel" text="Label">
                <padding>
                   <Insets bottom="30.0" top="30.0" />
                </padding>

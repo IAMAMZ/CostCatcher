@@ -21,8 +21,6 @@ public class CreatePayeeProfileController implements Initializable {
     @FXML
     private TextField pCodeTextField;
 
-    @FXML
-    private TextField getPayeeCountryTextField;
 
     @FXML
     private TextField payeeEmailTextField;

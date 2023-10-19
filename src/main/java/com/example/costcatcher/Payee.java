@@ -68,7 +68,7 @@ public class Payee {
      */
     public void setEmail(String email) {
         if ((email==null) || (!email.matches("^.+@.+\\.+$")))
-        this.email = email;
+            this.email = email;
     }
 
     public String getStreetAddress() {
@@ -111,7 +111,7 @@ public class Payee {
     public void setCountry(String country) {
         if( ( country==null) ||(!country.matches("\\D{3,60}")) )
             throw new IllegalArgumentException("Country must not contain digits and must be between 3 and 60 characters");
-        country = country;
+        this.country = country;
     }
 
 

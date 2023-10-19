@@ -2,19 +2,20 @@ package com.example.costcatcher;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
-public class InsertExpenseController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    @FXML
-    private TextField ExpNameTxtField;
+public class InsertExpenseController implements Initializable {
 
     @FXML
-    private TextField RecurrencePeriodTextField;
+    private TextField expNameTxtField;
+
+    @FXML
+    private TextField recurrencePeriodTextField;
 
     @FXML
     private TextField amountDueTextField;
@@ -35,6 +36,9 @@ public class InsertExpenseController {
     private ChoiceBox<?> payeCHoiceBox;
 
     @FXML
+    private Label respLabel;
+
+    @FXML
     void backToExpenseTableBtn(ActionEvent event) {
 
     }
@@ -45,8 +49,21 @@ public class InsertExpenseController {
     }
 
     @FXML
-    void toCreatePayeeProfilebtn(ActionEvent event) {
+    void toCreatePayeeProfilebtn(ActionEvent event) throws IOException {
+        SceneChanger.changeScenes(event,"insert-expenseview.fxml");
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        respLabel.setText("");
+        
+    }
+
+    public void clearInputs(){
+
+        amountDueTextField.clear();
+        expNameTxtField.clear();
+        recurrencePeriodTextField.clear();
+    }
 }

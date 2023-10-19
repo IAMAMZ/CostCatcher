@@ -129,7 +129,7 @@ public class DbUtility {
         {
             ps.setString(1,payee.getPayeeName());
             ps.setString(2,payee.getContactNumber());
-            ps.setString(3,payee.getContactNumber());
+            ps.setString(3,payee.getEmail());
             ps.setString(4,payee.getStreetAddress());
             ps.setString(5,payee.getPostalCode());
             ps.setString(6,payee.getCountry());
@@ -151,6 +151,40 @@ public class DbUtility {
 
         return responseMsg;
 
+
+    }
+
+    public static ArrayList<Payee> getPayees(){
+        ArrayList<Payee> payees = new ArrayList<>();
+
+        String sql = "SELECT * from Payee";
+
+        try(
+                Connection conn = DriverManager.getConnection(connectUrl,user,password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+                ) {
+
+            while (resultSet.next()) {
+                Integer payeeId = resultSet.getInt("payeeId");
+                String payeeName = resultSet.getString("payeeName");
+                String contactNum = resultSet.getString("contactNumber");
+                String email = resultSet.getString("email");
+                String streetAddress = resultSet.getString("streetAddress");
+                String postalCode = resultSet.getString("postalCode");
+                String country = resultSet.getString("country");
+
+                Payee payee = new Payee(payeeId, payeeName, contactNum, email, streetAddress, postalCode, country);
+                payees.add(payee);
+            }
+            }
+         catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return payees;
 
     }
 
