@@ -76,7 +76,7 @@ public class DbUtility {
         return expenses;
     }
 
-    public static String saveExpense(String expenseName, LocalDate dueDate, boolean paid, double amountDue, Payee payee,boolean isRecurring, int recurrencePeriod) throws SQLException {
+    public static String insertExpenseToDb(Expense expense,boolean isRecurring,int recurringPeriod) throws SQLException {
 
         String responseMsg = "Something Went Wrong";
 
@@ -88,14 +88,14 @@ public class DbUtility {
                 )
         {
             // add the values
-            ps.setString(1,expenseName);
-            ps.setString(2,dueDate.toString());
+            ps.setString(1,expense.getExpenseName());
+            ps.setString(2,expense.getDueDate().toString());
             ps.setString(3,LocalDate.now().toString());
-            ps.setString(4, paid?"TRUE":"FALSE");
-            ps.setString(5,String.valueOf(amountDue));
-            ps.setString(6,isRecurring?"TRUE":"FALSE");
-            ps.setString(7,String.valueOf(recurrencePeriod));
-            ps.setString(8,String.valueOf(payee.getPayeeId()));
+            ps.setString(4, expense.isPaid() ? String.valueOf(1):String.valueOf(0));
+            ps.setString(5,String.valueOf(expense.getAmountDue()));
+            ps.setString(6,isRecurring? String.valueOf(1):String.valueOf(0));
+            ps.setString(7,String.valueOf(recurringPeriod));
+            ps.setString(8,String.valueOf(expense.getPayee().getPayeeId()));
 
             // execute the update
             ps.executeUpdate();
@@ -113,6 +113,45 @@ public class DbUtility {
 
 
         return responseMsg;
+    }
+
+    public static String insertPayeeToDb(Payee payee) throws SQLException {
+
+        String responseMsg = "Something went wrong";
+
+
+        String sql = "INSERT INTO Payee ( payeeName, contactNumber, email, streetAddress, postalCode, country) VALUES (?,?,?,?,?,?)";
+
+        try(
+                Connection conn = DriverManager.getConnection(connectUrl,user,password);
+                PreparedStatement  ps = conn.prepareStatement(sql);
+                )
+        {
+            ps.setString(1,payee.getPayeeName());
+            ps.setString(2,payee.getContactNumber());
+            ps.setString(3,payee.getContactNumber());
+            ps.setString(4,payee.getStreetAddress());
+            ps.setString(5,payee.getPostalCode());
+            ps.setString(6,payee.getCountry());
+
+            ps.executeUpdate();
+
+        }
+        catch (SQLException e){
+            responseMsg = "Something went wrong payee not saved";
+
+        }
+        catch (Exception e ){
+            responseMsg = e.getMessage();
+        }
+
+
+
+        responseMsg = "Success Payee profile created";
+
+        return responseMsg;
+
+
     }
 
 

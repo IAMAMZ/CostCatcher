@@ -2,9 +2,11 @@ package com.example.costcatcher;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-
-import java.io.IOException;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 
 public class InsertExpenseController {
 
@@ -12,7 +14,7 @@ public class InsertExpenseController {
     private TextField ExpNameTxtField;
 
     @FXML
-    private TextField PayeeContactNTextField;
+    private TextField RecurrencePeriodTextField;
 
     @FXML
     private TextField amountDueTextField;
@@ -21,43 +23,29 @@ public class InsertExpenseController {
     private DatePicker dueDateDatePicker;
 
     @FXML
-    private ChoiceBox<?> isPaidChoiceBox;
-
-    @FXML
-    private TextField pCodeTextField;
-
-    @FXML
-    private TextField payeeCityAddressTextField;
-
-    @FXML
-    private TextField payeeEmailTextField;
-
-    @FXML
-    private TextField payeeNameTextField;
-
-    @FXML
-    private TextField payeeStAdressTextField;
-    @FXML
-    private TextField RecurrencePeriodTextFiedl;
-    @FXML
-    private RadioButton notPaidRadio;
-    @FXML
     private RadioButton isPaidRadio;
 
     @FXML
     private CheckBox isReccuringCheckBox;
 
-
+    @FXML
+    private RadioButton notPaidRadio;
 
     @FXML
-    void backToExpenseTableBtn(ActionEvent event) throws IOException {
+    private ChoiceBox<?> payeCHoiceBox;
 
-        SceneChanger.changeScenes(event,"expense-tableview.fxml");
+    @FXML
+    void backToExpenseTableBtn(ActionEvent event) {
 
     }
 
     @FXML
     void submitExpenseBtn(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toCreatePayeeProfilebtn(ActionEvent event) {
 
     }
 

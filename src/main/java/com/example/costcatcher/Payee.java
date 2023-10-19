@@ -126,4 +126,16 @@ public class Payee {
         setPostalCode( postalCode);
         setCountry( country);
     }
+    /**
+     * Overloaded constructor to ignore payee id in payee creation
+     *
+     */
+    public Payee( String payeeName, String contactNumber, String email, String streetAddress, String postalCode, String country) {
+        setPayeeName( payeeName);
+        setContactNumber( contactNumber);
+        setEmail( email);
+        setStreetAddress( streetAddress);
+        setPostalCode( postalCode);
+        setCountry( country);
+    }
 }
