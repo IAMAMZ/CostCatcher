@@ -115,8 +115,6 @@ public class Payee {
     }
 
 
-
-
     public Payee(int payeeId, String payeeName, String contactNumber, String email, String streetAddress, String postalCode, String country) {
         setPayeeId( payeeId);
         setPayeeName( payeeName);
@@ -137,5 +135,10 @@ public class Payee {
         setStreetAddress( streetAddress);
         setPostalCode( postalCode);
         setCountry( country);
+    }
+
+    @Override
+    public String toString(){
+        return this.payeeName;
     }
 }

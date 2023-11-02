@@ -18,7 +18,7 @@
 
 <AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.costcatcher.InsertExpenseController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="429.0" text="Insert an Expense">
                <font>
@@ -98,7 +98,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="payeCHoiceBox" prefWidth="150.0" GridPane.columnIndex="1">
+                        <ChoiceBox fx:id="payeeChoiceBox" prefWidth="150.0" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="300.0" />
                            </GridPane.margin>

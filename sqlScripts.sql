@@ -39,9 +39,32 @@ select * from Expense LEFT JOIN Payee on Expense.payeeId = Payee.PayeeId;
 
 select * from Expense right JOIN Payee on Expense.payeeId = Payee.PayeeId;
 
-DELETE FROM Payee;
+DELETE FROM Payee WHERE country is Null;
 
 select * from Expense;
 SELECT * FROM Payee;
 
 INSERT INTO Expense  (expenseName, dueDate, creationDate, paid, amountDue, isRecurring, recurrencePeriodDays, payeeId)VALUES ("Service fee",'2023-09-05','2023,-8-05',FALSE,400,TRUE,30,1);
+
+select * from Payee;
+
+SELECT
+    CONSTRAINT_NAME 
+FROM
+    information_schema.KEY_COLUMN_USAGE
+WHERE
+    TABLE_NAME = 'Expense' AND
+    COLUMN_NAME = 'payeeId' AND
+    REFERENCED_TABLE_NAME = 'Payee';
+    
+    
+    
+ALTER TABLE Expense
+DROP FOREIGN KEY expense_ibfk_1;
+
+-- Now, add a new foreign key constraint with ON DELETE CASCADE
+
+ALTER TABLE Expense
+ADD CONSTRAINT fk_payee
+FOREIGN KEY (payeeId) REFERENCES Payee(payeeId)
+ON DELETE CASCADE;

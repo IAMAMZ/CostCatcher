@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb36cd82-f372-4648-8c93-335a3df88fa1" name="Changes" comment="add insert view, DbUtility method to insert payee and expense, and CreatePayeeProfileController">
+    <list default="true" id="fb36cd82-f372-4648-8c93-335a3df88fa1" name="Changes" comment="bug fixes, and added get payees from payees table method to DbUtility">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/CreatePayeeProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/CreatePayeeProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/DbUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/DbUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlScripts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sqlScripts.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/InsertExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/InsertExpenseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Payee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/Payee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/TestingDbUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/costcatcher/TestingDbUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/create-payeeview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/create-payeeview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/expense-tableview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/expense-tableview.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/insert-expenseview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/costcatcher/insert-expenseview.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +29,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -53,11 +56,14 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_directory_selection": "C:/Users/akra/OneDrive/code/JavaForLearning/CostCatcher/src/main/resources/com/example/costcatcher",
-    "last_opened_file_path": "C:/Users/akra/Downloads/F23COMP1011LHToDoTasks-master (2)",
+    "last_opened_file_path": "C:/Users/akra/OneDrive/code/JavaForLearning/CostCatcher",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -114,7 +120,14 @@
       <workItem from="1697383299124" duration="6706000" />
       <workItem from="1697476543006" duration="6490000" />
       <workItem from="1697557026961" duration="5079000" />
-      <workItem from="1697644713498" duration="12833000" />
+      <workItem from="1697644713498" duration="13239000" />
+      <workItem from="1697688087832" duration="15000" />
+      <workItem from="1697689378715" duration="83000" />
+      <workItem from="1697689478365" duration="921000" />
+      <workItem from="1697690443491" duration="180000" />
+      <workItem from="1697690641153" duration="227000" />
+      <workItem from="1697723614974" duration="453000" />
+      <workItem from="1698942700187" duration="4299000" />
     </task>
     <task id="LOCAL-00001" summary="Create model classes">
       <option name="closed" value="true" />
@@ -196,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697676849593</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="bug fixes, and added get payees from payees table method to DbUtility">
+      <option name="closed" value="true" />
+      <created>1697683492760</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697683492760</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +234,8 @@
     <MESSAGE value="Add expense View and Controller Skeleton. Add scene change class and change scenes between the two views. Save expenses to be completed in DbUtility class." />
     <MESSAGE value="Add saveExpense method in DbUtility. Add some view and controller adjustments to account for Recurring expenses" />
     <MESSAGE value="add insert view, DbUtility method to insert payee and expense, and CreatePayeeProfileController" />
-    <option name="LAST_COMMIT_MESSAGE" value="add insert view, DbUtility method to insert payee and expense, and CreatePayeeProfileController" />
+    <MESSAGE value="bug fixes, and added get payees from payees table method to DbUtility" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes, and added get payees from payees table method to DbUtility" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

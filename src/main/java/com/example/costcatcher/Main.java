@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("create-payeeview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("expense-tableview.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Expense Table");
         stage.setScene(scene);

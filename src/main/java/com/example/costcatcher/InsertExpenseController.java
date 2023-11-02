@@ -1,5 +1,7 @@
 package com.example.costcatcher;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,6 +9,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InsertExpenseController implements Initializable {
@@ -33,30 +36,40 @@ public class InsertExpenseController implements Initializable {
     private RadioButton notPaidRadio;
 
     @FXML
-    private ChoiceBox<?> payeCHoiceBox;
+    private ChoiceBox<Payee> payeeChoiceBox;
 
     @FXML
     private Label respLabel;
 
     @FXML
-    void backToExpenseTableBtn(ActionEvent event) {
-
+    void backToExpenseTableBtn(ActionEvent event) throws IOException {
+    SceneChanger.changeScenes(event,"expense-tableview.fxml");
     }
 
     @FXML
     void submitExpenseBtn(ActionEvent event) {
 
     }
+    private void loadPayeesIntoChoiceBox(){
+
+        ArrayList<Payee> payees = DbUtility.getPayees();
+        // Convert the List to an ObservableList
+        ObservableList<Payee> observablePayees = FXCollections.observableArrayList(payees);
+
+        // Set the ObservableList into the ChoiceBox
+        payeeChoiceBox.setItems(observablePayees);
+    }
 
     @FXML
     void toCreatePayeeProfilebtn(ActionEvent event) throws IOException {
-        SceneChanger.changeScenes(event,"insert-expenseview.fxml");
+        SceneChanger.changeScenes(event,"create-payeeview.fxml");
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         respLabel.setText("");
+        loadPayeesIntoChoiceBox();
         
     }
 
